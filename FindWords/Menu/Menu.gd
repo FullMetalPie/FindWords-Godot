@@ -14,7 +14,6 @@ func add_items():
 	drop_down_menu.add_item("8X8", 8)
 	drop_down_menu.add_item("10x10", 10)
 	drop_down_menu.add_item("12x12", 12)
-	drop_down_menu.add_item("15x15", 15)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -31,8 +30,6 @@ func _on_option_button_item_selected(index):
 			fill_Info(10, Global.MAX10)
 		4:
 			fill_Info(12, Global.MAX12)
-		5:
-			fill_Info(15, Global.MAX15)
 		_:
 			push_error("ERROR")
 			
