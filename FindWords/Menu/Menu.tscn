@@ -1,26 +1,71 @@
-[gd_scene load_steps=2 format=3 uid="uid://iapamus06qee"]
+[gd_scene load_steps=4 format=3 uid="uid://iapamus06qee"]
 
 [ext_resource type="Script" path="res://Menu/Menu.gd" id="1_qvgno"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feipb"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0f2g"]
+bg_color = Color(0.439216, 0.439216, 0.439216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
 [node name="Menu" type="Node2D"]
+position = Vector2(-1, 2)
 script = ExtResource("1_qvgno")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer"]
-offset_left = 526.0
-offset_top = 124.0
-offset_right = 571.0
-offset_bottom = 144.0
+offset_left = 939.0
+offset_top = 231.0
+offset_right = 1012.0
+offset_bottom = 262.0
 
 [node name="Button" type="Button" parent="."]
 visible = false
-offset_left = 443.0
-offset_top = 413.0
-offset_right = 701.0
-offset_bottom = 537.0
+offset_left = 870.0
+offset_top = 789.0
+offset_right = 1128.0
+offset_bottom = 913.0
 theme_override_font_sizes/font_size = 59
 text = "PLAY"
 
+[node name="CanvasLayerParole" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label_PAROLE" type="Label" parent="CanvasLayerParole"]
+offset_left = 811.0
+offset_top = 333.0
+offset_right = 1164.0
+offset_bottom = 601.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_feipb")
+text = "
+PAROLA:"
+horizontal_alignment = 1
+
+[node name="TextEdit" type="LineEdit" parent="CanvasLayerParole/Label_PAROLE"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 126.0
+offset_right = 299.0
+offset_bottom = 163.0
+placeholder_text = "Inserire parola
+"
+
+[node name="Button_Submit" type="Button" parent="CanvasLayerParole/Label_PAROLE"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 178.0
+offset_right = 223.0
+offset_bottom = 209.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_x0f2g")
+text = "Inserisci
+"
+
 [connection signal="item_selected" from="CanvasLayer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayerParole/Label_PAROLE/Button_Submit" to="." method="_on_button_submit_pressed"]
