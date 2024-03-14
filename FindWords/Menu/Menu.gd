@@ -49,7 +49,7 @@ func _on_button_submit_pressed():
 	print(cont, selected)
 	if cont != selected:
 		var new_word = str($CanvasLayerParole/Label_PAROLE/TextEdit.text)
-		if len(new_word) <= Global.resGrid:
+		if len(new_word) <= Global.resGrid and len(new_word) != 0:
 			Global.words.append(new_word)
 			$CanvasLayerParole/Label_PAROLE/TextEdit.text = ""
 			$CanvasLayerParole/Label_PAROLE.text = "\n RIMANENTI: " + str((selected - 1 - cont)) + "\nLUNGHEZZA MAX PAROLA: " + str(Global.resGrid)
