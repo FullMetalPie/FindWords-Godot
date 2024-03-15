@@ -4,11 +4,11 @@ var rng = RandomNumberGenerator.new()
 var grid_size = Global.resGrid
 var grid = []
 var style = StyleBoxFlat.new()
-const LIMIT = 30
+const LIMIT = 30 #numero dopo il quale si prova posizionare la parola con una direzione differente
 var cont = 0
 var flag_assolutism = false
 var cont_parall = 0
-var LIMIT_ERROR = 1000
+var LIMIT_ERROR = 1000 #numero massimo dopo il quale si stabilisce che non si riesce a completare la configurazione avviata
 
 func _ready():
 	style.bg_color = Color.WHITE
@@ -114,7 +114,7 @@ func generate_crossword(): #genera la tabella completa
 					row = rng.randi_range(0, grid_size - word.length())
 					col = rng.randi_range(word.length() - 1, grid_size - 1)
 					
-				intersecting = check_intersection(word, row, col, direction)
+				intersecting = check_intersection(word, row, col, direction) 
 				
 				
 				
