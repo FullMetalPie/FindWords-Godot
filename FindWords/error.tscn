@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://ufj5mth80mj3"]
+
+[sub_resource type="GDScript" id="GDScript_ewsc1"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file(\"res://Grid/Grid.tscn\")
+	print(\"limite superato (LIMIT_MAX_CYCLE = 1000)\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfjki"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Error" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_ewsc1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 1921.0
+offset_bottom = 1082.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_xfjki")
+text = "
+
+
+
+ERRORE NEL CARICAMENTO DELLA GRIGLIA!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Label"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 522.0
+offset_right = 1208.0
+offset_bottom = 714.0
+scale = Vector2(1.05665, 1.03099)
+theme_override_font_sizes/font_size = 50
+text = "RIPROVA"
+
+[connection signal="pressed" from="CanvasLayer/Label/Button" to="." method="_on_button_pressed"]
