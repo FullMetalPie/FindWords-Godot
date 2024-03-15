@@ -14,6 +14,7 @@ func add_items():
 	drop_down_menu.add_item("8X8", 8)
 	drop_down_menu.add_item("10x10", 10)
 	drop_down_menu.add_item("12x12", 12)
+	drop_down_menu.add_item("17x17", 17)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,6 +31,8 @@ func _on_option_button_item_selected(index):
 			fill_Info(10, Global.MAX10)
 		4:
 			fill_Info(12, Global.MAX12)
+		5:
+			fill_Info(17, Global.MAX17)
 		_:
 			push_error("ERROR")
 			
@@ -43,11 +46,10 @@ func _on_button_pressed():
 
 
 func _on_button_submit_pressed():
-	print(cont, selected)
 	if cont != selected:
 		var new_word = str($CanvasLayerParole/Label_PAROLE/TextEdit.text)
 		if len(new_word) <= Global.resGrid and len(new_word) != 0:
-			Global.words.append(new_word)
+			Global.words.append(new_word.strip_edges())
 			$CanvasLayerParole/Label_PAROLE/TextEdit.text = ""
 			$CanvasLayerParole/Label_PAROLE.text = "\n RIMANENTI: " + str((selected - 1 - cont)) + "\nLUNGHEZZA MAX PAROLA: " + str(Global.resGrid)
 			print(Global.words)

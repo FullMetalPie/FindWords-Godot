@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://iapamus06qee"]
+[gd_scene load_steps=6 format=3 uid="uid://iapamus06qee"]
 
 [ext_resource type="Script" path="res://Menu/Menu.gd" id="1_qvgno"]
 
@@ -12,6 +12,13 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="InputEventAction" id="InputEventAction_3bs8n"]
+resource_local_to_scene = true
+action = &"ui_accept"
+
+[sub_resource type="Shortcut" id="Shortcut_3grx7"]
+events = [SubResource("InputEventAction_3bs8n")]
 
 [node name="Menu" type="Node2D"]
 position = Vector2(-1, 2)
@@ -63,6 +70,8 @@ offset_top = 178.0
 offset_right = 223.0
 offset_bottom = 209.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_x0f2g")
+shortcut = SubResource("Shortcut_3grx7")
+shortcut_in_tooltip = false
 text = "Inserisci
 "
 
