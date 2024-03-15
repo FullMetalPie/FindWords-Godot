@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://dblupbr1vdt3u"]
+
+[ext_resource type="Script" path="res://Grid/CreateGrid.gd" id="1_ewyqf"]
+[ext_resource type="Script" path="res://Grid/SubViewport.gd" id="1_l0mv7"]
+
+[sub_resource type="GDScript" id="GDScript_fyho6"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	for word in Global.words:	
+		$Label_Words.text += \"\\n - \" + word.to_upper()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="Grid" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -3.0
+offset_right = 1.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_fyho6")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+script = ExtResource("1_l0mv7")
+
+[node name="Control" type="GridContainer" parent="SubViewport"]
+offset_left = 16.0
+offset_top = 73.0
+offset_right = 84.0
+offset_bottom = 156.0
+script = ExtResource("1_ewyqf")
+
+[node name="Label_Words" type="Label" parent="SubViewport"]
+offset_left = 1315.0
+offset_top = 47.0
+offset_right = 1721.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 40
+text = "PAROLE DA TROVARE"
+
+[node name="save" type="Button" parent="SubViewport"]
+offset_left = 1335.0
+offset_top = 905.0
+offset_right = 1829.0
+offset_bottom = 1029.0
+theme_override_font_sizes/font_size = 59
+text = "SCARICA GRIGLIA"
+
+[connection signal="pressed" from="SubViewport/save" to="SubViewport/Control" method="_on_save_pressed"]
